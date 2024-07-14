@@ -1,8 +1,9 @@
  
-import {  AppBar, Avatar, Box, Container, Paper, Toolbar, Typography,   } from '@mui/material';
+import {  AppBar, Box, Container, Paper, Toolbar, Typography,   } from '@mui/material';
 import InputField from '../inputfield/inputfield';
 import { MessageProp } from '../../types/types';
 import { useEffect, useState } from 'react';
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
  
 const Chatbot_Window = () => {
   const [messages, setMessages] = useState<MessageProp[]>([]);
@@ -24,10 +25,9 @@ const Chatbot_Window = () => {
 
   return (
    <Container maxWidth="sm" sx={{ padding: 0, display: 'flex', flexDirection: 'column', height: '100vh' }}>
-          <AppBar position="static" color="primary">
-        <Toolbar>
-           
-          <Avatar alt="Bot" src="assests\image.png" />
+        <AppBar position="static" color="primary">
+        <Toolbar> 
+          <SupportAgentIcon fontSize="large" />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, marginLeft: 2 }}>
             Stormy Bot
           </Typography>
