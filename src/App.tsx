@@ -1,11 +1,11 @@
  
 import './App.css';
+import ChatbotWindow from './components/chatbot_window/chatbot_window';
 
 function App() {
   return (
     <>
-    <h1>Hello World</h1>
-    
+      <ChatbotWindow/>
     </>
   );
 }
