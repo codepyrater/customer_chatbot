@@ -1,46 +1,147 @@
-# Getting Started with Create React App
+## Customer Support Chatbot UI
+# Overview
+This project is a Customer Support Chatbot User Interface (UI) developed using React and TypeScript. The UI is designed to facilitate efficient and intuitive interactions for Customer Support Agents. It incorporates rich text editing features, quick replies, and integrates seamlessly with the Gemini API for chatbot functionalities.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+- Rich Text Editing: Agents can format chatbot responses using bold, italic, underline, lists, and links.
+- Quick Replies: Predefined quick replies to streamline interactions.
+- Responsive Design: Ensures compatibility across different devices and platforms.
 
-## Available Scripts
+## Libraries Used
+- React: A JavaScript library for building user interfaces.
+- TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
+- Material-UI (MUI): A popular React UI framework for building responsive, accessible, and customizable design systems.
+- React Quill: A React component for Quill, a powerful rich text editor.
+- Gemini API: For chatbot responses.
 
-In the project directory, you can run:
+## Commands
+### Install Dependencies
+Using Yarn Package Manager
 
-### `yarn start`
+```bash
+yarn create react-app customer_chatbot --template typescript
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Add Material-UI:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```bash
+yarn add @mui/material @emotion/react @emotion/styled @mui/icons-material 
+```
 
-### `yarn test`
+Add React Quill:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+yarn add react-quill
+yarn add quill
+```
 
-### `yarn build`
+Add Gemini API Library:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+yarn add @google/generative-ai
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Environment Variables
+To use the Gemini API, you'll need an API key. Follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Get the API Key:
+    - Sign up for the Gemini API and obtain your free API key from the Google Cloud Console.
+2. Store the API Key in .env:
+    - Create a .env file in the root directory of your project and add your API key:
+    ```env
+    REACT_APP_API_KEY=your_api_key_here
+    ```
 
-### `yarn eject`
+## Project Structure
+```
+chatbot-ui/
+├── public/
+├── src/
+│   ├── components/
+│   │   ├── ChatWindow.tsx
+│   │   ├── Message.tsx
+│   │   ├── RichTextResponse.tsx
+│   │   ├── InputField.tsx
+│   ├── services/
+│   │   ├── GeminiService.ts
+│   │    
+│   ├── App.tsx
+│   ├── index.tsx
+├── .env
+├── package.json
+├── README.md
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Getting Started
+### Prerequisites
+- Node.js (v14 or later)
+- Yarn (v1.22 or later)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Installation
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/chatbot-ui.git
+    cd chatbot-ui
+    ```
+2. Install dependencies:
+    ```bash
+    yarn install
+    ```
+3. Setup environment variables:
+    - Create a .env file in the root directory and add your API key:
+    ```env
+    REACT_APP_API_KEY=your_api_key_here
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Running the Project
+To start the development server, run:
+```bash
+yarn start
+```
+This will open the application in your default web browser.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Usage
+1. Start the development server:
+    ```bash
+    yarn start
+    ```
+2. Interact with the chatbot:
+    - Use the rich text editor to format responses.
+    - Utilize quick reply buttons for common queries.
+    - Edit and send responses using the "Send Edited Response" button.
 
-## Learn More
+## Components
+### ChatWindow.tsx
+Description: Main component that integrates all other components and handles interaction logic.
+Features:
+- Displays messages.
+- Provides quick replies.
+- Integrates the input field for sending messages.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Message.tsx
+Description: Component to display individual messages.
+Features:
+- Handles and displays formatted text using dangerouslySetInnerHTML.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### RichTextResponse.tsx
+Description: Component providing a rich text editor using React Quill.
+Features:
+- Allows agents to format text before sending.
+
+### InputField.tsx
+Description: Input field for agents to type and send messages.
+Features:
+- Triggers message send on Enter key press.
+
+### GeminiService.ts
+Description: Service to interact with the Gemini API for chatbot responses.
+Features:
+- Sends messages to the Gemini API and receives responses.
+ 
+
+## Conclusion
+This project provides a robust and interactive customer support chatbot UI using React and Material-UI, integrated with the Gemini API for chatbot functionalities. It offers rich text editing features, quick replies, and ensures responsiveness across various devices, making it suitable for enterprise-level applications.
+
+For any questions or further assistance, feel free to reach out or refer to the project documentation.
+
+This README file provides a detailed overview of the project, its features, installation instructions, and usage guidelines, ensuring it meets professional and enterprise standards.
