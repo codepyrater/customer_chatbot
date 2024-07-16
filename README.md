@@ -144,4 +144,4 @@ This project provides a robust and interactive customer support chatbot UI using
 
 For any questions or further assistance, feel free to reach out or refer to the project documentation.
 
-This README file provides a detailed overview of the project, its features, installation instructions, and usage guidelines, ensuring it meets professional and enterprise standards.
+ 
