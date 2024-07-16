@@ -9,10 +9,10 @@ import Message from './Message';
 import InputField from './InputField';
 
 const ChatWindow = () => {
-  // State to keep track of all messages in the chat
+  // state to manage all chat messages
   const [messages, setMessages] = useState<MessageProp[]>([]);
  
-  // State to manage the current editable response content
+  // State to manage the editable response content
   const [editableResponse, setEditableResponse] = useState<string>('');
 
   // Function to handle sending a new message
@@ -28,24 +28,13 @@ const ChatWindow = () => {
     }
   };
 
-  // Function to handle changes in the rich text editor
-  const handleResponseChange = (value: string) => {
-    setEditableResponse(value); // Update the editable response content
-  };
+ 
 
-  // Function to send the edited bot response
-  const handleSendEditedResponse = () => {
-    if (editableResponse.trim()) {
-      // Add the edited response as a bot message to the chat
-      const editedMessage: MessageProp = { sender: 'bot', text: editableResponse };
-      setMessages((prevMessages) => [...prevMessages, editedMessage]);
-      setEditableResponse(''); // Clear the editable content after sending
-    }
-  };
+ 
 
   return (
     <Container maxWidth="sm" sx={{ padding: 0, display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      {/* Top bar with the title and icon */}
+   
       <AppBar position="static" color="primary">
         <Toolbar>
           <SupportAgentIcon fontSize="large" sx={{ marginRight: 2 }} />
@@ -55,9 +44,9 @@ const ChatWindow = () => {
         </Toolbar>
       </AppBar>
 
-      {/* Main chat window area */}
+  
       <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, flexGrow: 1, display: 'flex', flexDirection: 'column', height: 'calc(100vh - 64px)' }}>
-        {/* Displaying all chat messages */}
+        {/* Chat messages */}
         <Box sx={{ flex: 1, overflowY: 'auto', padding: 2 }}>
           {messages.map((msg, index) => (
             <Message key={index} sender={msg.sender} text={msg.text} />
@@ -66,7 +55,7 @@ const ChatWindow = () => {
         </Box>
 
 
-        {/* Input field for typing new messages */}
+        {/* Input field */}
         <Box>
           <InputField onSendMessage={handleSendMessage} />
         </Box>
