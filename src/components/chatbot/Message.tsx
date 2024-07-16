@@ -36,6 +36,8 @@ const Message = ({ sender, text }: MessageProp) => {
         }}
       >
         <Typography variant="body1" component="div" sx={{ whiteSpace: 'pre-wrap' }}>
+
+          {/* Parse the sanitized text */}
           {parse(sanitizedText)}
         </Typography>
       </Paper>

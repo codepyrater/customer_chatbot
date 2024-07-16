@@ -1,5 +1,5 @@
 import React, { useState  } from 'react';
-import { Box, Container, Typography, Button, Paper, AppBar, Toolbar,  } from '@mui/material';
+import { Box, Container, Typography, Paper, AppBar, Toolbar,  } from '@mui/material';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import GeminiService from '../services/geminiService';
  
@@ -26,6 +26,7 @@ const ChatWindow = () => {
       const botResponse = await GeminiService.sendMessage(userMessage.text);
       setEditableResponse(botResponse); // Set the bot's response as the editable content
     }
+    console.log(editableResponse);
   };
 
  
