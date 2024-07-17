@@ -5,7 +5,7 @@ import { Paper } from '@mui/material';
 // props for the RichTextResponse component
 interface RichTextResponseProps {
   value: string;
-  onChange: (value: string) => void;
+  onChange: (value: string) => void; // function to handle response text change
 }
 
 const RichTextResponse = ({ value, onChange }: RichTextResponseProps) => {
