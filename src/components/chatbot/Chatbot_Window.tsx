@@ -1,5 +1,5 @@
 import React, { useState  } from 'react';
-import { Box, Container, Typography, Paper, AppBar, Toolbar,  } from '@mui/material';
+import { Box, Container, Typography, Paper, AppBar, Toolbar, Button,  } from '@mui/material';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import GeminiService from '../services/geminiService';
  
@@ -7,35 +7,38 @@ import { MessageProp } from '../../types/types';
 import Message from './Message';
  
 import InputField from './InputField';
-
+import RichTextResponse from '../text_editor/RichTextResponse';
 const ChatWindow = () => {
-  // state to manage all chat messages
   const [messages, setMessages] = useState<MessageProp[]>([]);
- 
-  // State to manage the editable response content
   const [editableResponse, setEditableResponse] = useState<string>('');
 
-  // Function to handle sending a new message
-  const handleSendMessage = async (input: string) => {
-    if (input.trim()) {
-      // Add the user's message to the chat
-      const userMessage: MessageProp = { sender: 'user', text: input };
-      setMessages((prevMessages) => [...prevMessages, userMessage]);
-      
-      // Get a response from the bot using the GeminiService
-      const botResponse = await GeminiService.sendMessage(userMessage.text);
-      setEditableResponse(botResponse); // Set the bot's response as the editable content
+  // Function to handle sending message
+  const sendMessage = async (inputText: string) => {
+    if (inputText.trim() !== '') {
+      const newMessage: MessageProp = { sender: 'user', text: inputText };
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
+
+      const botReply = await GeminiService.sendMessage(newMessage.text);
+      setEditableResponse(botReply);  // Set the bot's response
     }
-    console.log(editableResponse);
   };
 
- 
+  // Function to handle response text change
+  const handleResponseChange = (newResponse: string) => {
+    setEditableResponse(newResponse);
+  };
 
- 
+  // Function to send the edited response
+  const submitEditedResponse = () => {
+    if (editableResponse.trim() !== '') {
+      const botMessage: MessageProp = { sender: 'bot', text: editableResponse };
+      setMessages((prevMessages) => [...prevMessages, botMessage]);
+      setEditableResponse('');  // Clear the editable response
+    }
+  };
 
   return (
     <Container maxWidth="sm" sx={{ padding: 0, display: 'flex', flexDirection: 'column', height: '100vh' }}>
-   
       <AppBar position="static" color="primary">
         <Toolbar>
           <SupportAgentIcon fontSize="large" sx={{ marginRight: 2 }} />
@@ -45,20 +48,23 @@ const ChatWindow = () => {
         </Toolbar>
       </AppBar>
 
-  
       <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, flexGrow: 1, display: 'flex', flexDirection: 'column', height: 'calc(100vh - 64px)' }}>
-        {/* Chat messages */}
         <Box sx={{ flex: 1, overflowY: 'auto', padding: 2 }}>
           {messages.map((msg, index) => (
             <Message key={index} sender={msg.sender} text={msg.text} />
           ))}
-          
+          {editableResponse && (
+            <Box sx={{ marginBottom: 2 }}>
+              <RichTextResponse value={editableResponse} onChange={handleResponseChange} />
+              <Button variant="contained" color="primary" onClick={submitEditedResponse} sx={{ marginTop: 1 }}>
+                Send Edited Response
+              </Button>
+            </Box>
+          )}
         </Box>
 
-
-        {/* Input field */}
         <Box>
-          <InputField onSendMessage={handleSendMessage} />
+          <InputField onSendMessage={sendMessage} />
         </Box>
       </Paper>
     </Container>

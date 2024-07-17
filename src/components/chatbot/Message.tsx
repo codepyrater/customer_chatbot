@@ -7,22 +7,21 @@ import DOMPurify from 'dompurify';
 import parse from 'html-react-parser';
 
 const Message = ({ sender, text }: MessageProp) => {
-  const isUser = sender === 'user';
+  const isUserMessage = sender === 'user';  // Check if the message is from the user
 
-  // Sanitize the HTML content
-  const sanitizedText = DOMPurify.sanitize(text);
+  const cleanText = DOMPurify.sanitize(text);  // Sanitize the text to prevent XSS attacks
 
   return (
     <Box
       sx={{
         display: 'flex',
-        justifyContent: isUser ? 'flex-end' : 'flex-start',
+        justifyContent: isUserMessage ? 'flex-end' : 'flex-start',
         alignItems: 'flex-start',
         marginBottom: 2,
         maxWidth: '100%',
       }}
-    > 
-      {!isUser && (
+    >
+      {!isUserMessage && (
         <SupportAgentIcon fontSize="large" sx={{ marginRight: 2 }} />
       )}
       <Paper
@@ -30,18 +29,16 @@ const Message = ({ sender, text }: MessageProp) => {
         sx={{
           padding: 1.5,
           borderRadius: 2,
-          backgroundColor: isUser ? '#e0f7fa' : '#f1f1f1',
+          backgroundColor: isUserMessage ? '#e0f7fa' : '#f1f1f1',
           maxWidth: '75%',
           wordBreak: 'break-word',
         }}
       >
         <Typography variant="body1" component="div" sx={{ whiteSpace: 'pre-wrap' }}>
-
-          {/* Parse the sanitized text */}
-          {parse(sanitizedText)}
+          {parse(cleanText)}   
         </Typography>
       </Paper>
-      {isUser && (
+      {isUserMessage && (
         <Person2Icon fontSize="large" sx={{ marginLeft: 2 }} />
       )}
     </Box>
