@@ -3,12 +3,12 @@
 This project is a Customer Support Chatbot User Interface (UI) developed using React and TypeScript. The UI is designed to be efficient and also provide effective interactions for Customer Support Agents. It has rich text editing features, quick replies, and integrates with the Gemini API for chatbot functionalities.
 
 ## Features
-- Rich Text Editing: Agents can format the chatbot responses using bold, italic, underline, lists, and links feature pro0vided by the React Quill.
+- Rich Text Editing: Agents can format the chatbot responses using bold, italic, underline, lists, and links feature provided by the React Quill.
 - Quick Replies: Predefined quick replies to streamline interactions.
 - Responsive Design: Ensured compatibility across different devices and platforms.
 
 ## Libraries Used
-- React: A JavaScript library for building user interfaces.
+- React: A JavaScript library for building chatbot User interfaces.
 - TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
 - Material-UI (MUI): A popular React UI framework for building responsive, accessible, and customizable design systems.
 - React Quill: A React component for Quill, a powerful rich text editor.
