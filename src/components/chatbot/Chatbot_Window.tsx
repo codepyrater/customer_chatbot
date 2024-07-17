@@ -2,15 +2,14 @@ import React, { useState  } from 'react';
 import { Box, Container, Typography, Paper, AppBar, Toolbar, Button,  } from '@mui/material';
 import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 import GeminiService from '../services/geminiService';
- 
 import { MessageProp } from '../../types/types';
 import Message from './Message';
- 
 import InputField from './InputField';
 import RichTextResponse from '../text_editor/RichTextResponse';
 const ChatWindow = () => {
   const [messages, setMessages] = useState<MessageProp[]>([]);
   const [editableResponse, setEditableResponse] = useState<string>('');
+  const [quickReplies] = useState<string[]>(['Hello', 'Help', 'Thank you']);
 
   // Function to handle sending message
   const sendMessage = async (inputText: string) => {
@@ -48,7 +47,7 @@ const ChatWindow = () => {
         </Toolbar>
       </AppBar>
 
-      <Paper elevation={3} sx={{ padding: 2, borderRadius: 2, flexGrow: 1, display: 'flex', flexDirection: 'column', height: 'calc(100vh - 64px)' }}>
+      <Paper elevation={3} sx={{ padding: 2,  flexGrow: 1, display: 'flex', flexDirection: 'column', height: 'calc(100vh - 64px)' }}>
         <Box sx={{ flex: 1, overflowY: 'auto', padding: 2 }}>
           {messages.map((msg, index) => (
             <Message key={index} sender={msg.sender} text={msg.text} />
@@ -57,10 +56,18 @@ const ChatWindow = () => {
             <Box sx={{ marginBottom: 2 }}>
               <RichTextResponse value={editableResponse} onChange={handleResponseChange} />
               <Button variant="contained" color="primary" onClick={submitEditedResponse} sx={{ marginTop: 1 }}>
-                Send Edited Response
+                Send to Customer
               </Button>
             </Box>
           )}
+        </Box>
+
+        <Box sx={{ display: 'flex', justifyContent: 'space-around', padding: 2, borderTop: '1px solid #ddd', flexWrap: 'wrap' }}>
+          {quickReplies.map((reply, index) => (
+            <Button key={index} variant="outlined" onClick={() => sendMessage(reply)} sx={{ marginBottom: 1 }}>
+              {reply}
+            </Button>
+          ))}
         </Box>
 
         <Box>
