@@ -2,7 +2,7 @@ import React from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { Paper } from '@mui/material';
-
+// props for the RichTextResponse component
 interface RichTextResponseProps {
   value: string;
   onChange: (value: string) => void;

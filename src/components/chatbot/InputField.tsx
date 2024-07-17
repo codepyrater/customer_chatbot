@@ -12,7 +12,7 @@ const InputField = ({ onSendMessage }: Props) => {
   const handleSend = () => {
     if (inputText.trim()) {
       onSendMessage(inputText);  // Call the parent's onSendMessage function
-      console.log('Sent:', inputText);  // Log the sent message
+      console.log('Sent:', inputText);  // logging the sent message
       setInputText('');  // Clear the input field
     }
   };
@@ -25,15 +25,16 @@ const InputField = ({ onSendMessage }: Props) => {
   };
 
   return (
-    <Box display="flex" alignItems="center" mt={2}>
+    <Box display="flex" alignItems="center" >
       <TextField
+       size="small"
         variant="outlined"
         fullWidth
         value={inputText}
         onChange={(e) => setInputText(e.target.value)}  // Update state on text change
         onKeyDown={handleKeyDown}  // Send message on Enter key press
       />
-      <Button variant="contained" color="primary" onClick={handleSend} sx={{ ml: 2 }}>
+      <Button variant="contained" color="primary" onClick={handleSend} sx={{ ml: 2   }}>
         Send
       </Button>
     </Box>
