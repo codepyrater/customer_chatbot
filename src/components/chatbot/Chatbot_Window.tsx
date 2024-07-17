@@ -7,14 +7,14 @@ import Message from './Message';
 import InputField from './InputField';
 import RichTextResponse from '../text_editor/RichTextResponse';
 const ChatWindow = () => {
-  const [messages, setMessages] = useState<MessageProp[]>([]);
-  const [editableResponse, setEditableResponse] = useState<string>('');
-  const [quickReplies] = useState<string[]>(['Hello', 'Help', 'Thank you']);
+  const [messages, setMessages] = useState<MessageProp[]>([]); // state for managing messages
+  const [editableResponse, setEditableResponse] = useState<string>(''); // state for managing editable response
+  const [quickReplies] = useState<string[]>(['Hello', 'Help', 'Thank you']); // Quick replies
 
   // Function to handle sending message
   const sendMessage = async (inputText: string) => {
-    if (inputText.trim() !== '') {
-      const newMessage: MessageProp = { sender: 'user', text: inputText };
+    if (inputText.trim() !== '') { // Check if the input text is not empty
+      const newMessage: MessageProp = { sender: 'user', text: inputText }; // Create a new message object for user
       setMessages((prevMessages) => [...prevMessages, newMessage]);
 
       const botReply = await GeminiService.sendMessage(newMessage.text);
@@ -30,7 +30,7 @@ const ChatWindow = () => {
   // Function to send the edited response
   const submitEditedResponse = () => {
     if (editableResponse.trim() !== '') {
-      const botMessage: MessageProp = { sender: 'bot', text: editableResponse };
+      const botMessage: MessageProp = { sender: 'bot', text: editableResponse }; // Create a new message object for bot
       setMessages((prevMessages) => [...prevMessages, botMessage]);
       setEditableResponse('');  // Clear the editable response
     }
