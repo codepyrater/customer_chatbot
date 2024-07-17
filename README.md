@@ -1,18 +1,18 @@
 ## Customer Support Chatbot UI
 # Overview
-This project is a Customer Support Chatbot User Interface (UI) developed using React and TypeScript. The UI is designed to facilitate efficient and intuitive interactions for Customer Support Agents. It incorporates rich text editing features, quick replies, and integrates seamlessly with the Gemini API for chatbot functionalities.
+This project is a Customer Support Chatbot User Interface (UI) developed using React and TypeScript. The UI is designed to be efficient and also provide effective interactions for Customer Support Agents. It has rich text editing features, quick replies, and integrates with the Gemini API for chatbot functionalities.
 
 ## Features
-- Rich Text Editing: Agents can format chatbot responses using bold, italic, underline, lists, and links.
+- Rich Text Editing: Agents can format the chatbot responses using bold, italic, underline, lists, and links feature pro0vided by the React Quill.
 - Quick Replies: Predefined quick replies to streamline interactions.
-- Responsive Design: Ensures compatibility across different devices and platforms.
+- Responsive Design: Ensured compatibility across different devices and platforms.
 
 ## Libraries Used
 - React: A JavaScript library for building user interfaces.
 - TypeScript: A typed superset of JavaScript that compiles to plain JavaScript.
 - Material-UI (MUI): A popular React UI framework for building responsive, accessible, and customizable design systems.
 - React Quill: A React component for Quill, a powerful rich text editor.
-- Gemini API: For chatbot responses.
+- Gemini API: Free open source API for chatbot responses.
 
 ## Commands
 ### Install Dependencies
@@ -45,7 +45,7 @@ yarn add @google/generative-ai
 To use the Gemini API, you'll need an API key. Follow these steps:
 
 1. Get the API Key:
-    - Sign up for the Gemini API and obtain your free API key from the Google Cloud Console.
+    - Sign up for the Gemini API and obtain your free API key from the Gemini website.
 2. Store the API Key in .env:
     - Create a .env file in the root directory of your project and add your API key:
     ```env
@@ -60,11 +60,11 @@ chatbot-ui/
 │   ├── components/
 │   │   ├── ChatWindow.tsx
 │   │   ├── Message.tsx
-│   │   ├── RichTextResponse.tsx
 │   │   ├── InputField.tsx
+│   │   
 │   ├── services/
 │   │   ├── GeminiService.ts
-│   │    
+│   │── text_editor/ RichTextResponse.tsx    
 │   ├── App.tsx
 │   ├── index.tsx
 ├── .env
@@ -106,7 +106,7 @@ This will open the application in your default web browser.
     yarn start
     ```
 2. Interact with the chatbot:
-    - Use the rich text editor to format responses.
+    - Use the rich text editor to format responses from the API.
     - Utilize quick reply buttons for common queries.
     - Edit and send responses using the "Send Edited Response" button.
 
@@ -121,7 +121,7 @@ Features:
 ### Message.tsx
 Description: Component to display individual messages.
 Features:
-- Handles and displays formatted text using dangerouslySetInnerHTML.
+- Handles and displays formatted text using DOMPurify and html-parser.
 
 ### RichTextResponse.tsx
 Description: Component providing a rich text editor using React Quill.
@@ -140,7 +140,7 @@ Features:
  
 
 ## Conclusion
-This project provides a robust and interactive customer support chatbot UI using React and Material-UI, integrated with the Gemini API for chatbot functionalities. It offers rich text editing features, quick replies, and ensures responsiveness across various devices, making it suitable for enterprise-level applications.
+This project provides a interactive customer support chatbot UI using React and Material-UI, integrated with the Gemini API for chatbot functionalities. It provides rich text editing features, quick replies, and ensures responsiveness across various devices, making it suitable for enterprise-level applications.
 
 For any questions or further assistance, feel free to reach out or refer to the project documentation.
 
