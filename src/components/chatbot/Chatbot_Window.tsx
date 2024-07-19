@@ -47,7 +47,7 @@ const ChatWindow = () => {
         </Toolbar>
       </AppBar>
 
-      <Paper elevation={3} sx={{ padding: 2,  flexGrow: 1, display: 'flex', flexDirection: 'column', height: 'calc(100vh - 64px)' }}>
+      <Paper elevation={3} sx={{ padding: 2,  flexGrow: 1, display: 'flex', flexDirection: 'column', height: '100px' }}>
         <Box sx={{ flex: 1, overflowY: 'auto', padding: 2 }}>
           {messages.map((msg, index) => (
             <Message key={index} sender={msg.sender} text={msg.text} />
