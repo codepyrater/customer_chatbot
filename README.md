@@ -57,16 +57,18 @@ To use the Gemini API, you'll need an API key. Follow these steps:
 chatbot-ui/
 ├── public/
 ├── src/
-│   ├── components/
-│   │   ├── ChatWindow.tsx
-│   │   ├── Message.tsx
-│   │   ├── InputField.tsx
-│   │   
-│   ├── services/
-│   │   ├── GeminiService.ts
-│   │── text_editor/ RichTextResponse.tsx    
-│   ├── App.tsx
-│   ├── index.tsx
+│   components/
+│   │── chatbot/
+│   │    ├── Chatbot_Window.tsx
+│   │    ├── InputField.tsx
+│   │    └── Message.tsx
+│   services/
+│   └── geminiService.ts
+│   │
+│   text_editor/
+│   └── RichTextResponse.tsx  
+│── App.tsx
+│── index.tsx
 ├── .env
 ├── package.json
 ├── README.md
@@ -80,7 +82,7 @@ chatbot-ui/
 ### Installation
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/chatbot-ui.git
+    git clone https://github.com/srikarpunna/customer_chatbot.git
     cd chatbot-ui
     ```
 2. Install dependencies:
